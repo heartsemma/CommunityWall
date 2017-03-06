@@ -1,6 +1,6 @@
-package com.github.heartsemma.communitywall.Configuration;
+package com.github.heartsemma.communityWall.configuration;
 
-import com.github.heartsemma.communitywall.Configuration.Bots.BotConfig;
+import com.github.heartsemma.communityWall.configuration.bots.BotConfig;
 
 import ninja.leaping.configurate.objectmapping.Setting;
 import ninja.leaping.configurate.objectmapping.serialize.ConfigSerializable;

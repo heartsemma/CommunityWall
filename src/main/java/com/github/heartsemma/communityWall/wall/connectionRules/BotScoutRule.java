@@ -1,4 +1,4 @@
-package com.github.heartsemma.communitywall.Wall.ConnectionRules;
+package com.github.heartsemma.communityWall.wall.connectionRules;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -10,9 +10,9 @@ import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.spongepowered.api.network.PlayerConnection;
 
-import com.github.heartsemma.communitywall.Configuration.Bots.BotConfig;
-import com.github.heartsemma.communitywall.Configuration.Bots.BotScoutConfig;
-import com.github.heartsemma.communitywall.Wall.ConnectionRule;
+import com.github.heartsemma.communityWall.configuration.bots.BotConfig;
+import com.github.heartsemma.communityWall.configuration.bots.BotScoutConfig;
+import com.github.heartsemma.communityWall.wall.ConnectionRule;
 
 /**
  * This check uses the API from botscout.com to check incoming players.

@@ -9,6 +9,8 @@ import java.nio.file.Path;
 import org.junit.Test;
 import org.slf4j.LoggerFactory;
 
+import com.github.heartsemma.communityWall.configuration.ConfigUtils;
+
 public class ConfigUtilsTest
 {
 	private ConfigUtils configUtils = new ConfigUtils("TestPlugin", LoggerFactory.getLogger("ROOT"));

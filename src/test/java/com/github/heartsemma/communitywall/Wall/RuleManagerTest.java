@@ -14,8 +14,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.spongepowered.api.network.PlayerConnection;
 
-import com.github.heartsemma.communitywall.Wall.ConnectionRule;
-import com.github.heartsemma.communitywall.Wall.RuleManager;
+import com.github.heartsemma.communityWall.wall.ConnectionRule;
+import com.github.heartsemma.communityWall.wall.RuleManager;
 
 public class RuleManagerTest
 {

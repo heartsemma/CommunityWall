@@ -1,4 +1,4 @@
-package com.github.heartsemma.communitywall.Wall;
+package com.github.heartsemma.communityWall.wall;
 
 import java.util.HashSet;
 

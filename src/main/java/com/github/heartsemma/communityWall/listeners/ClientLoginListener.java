@@ -1,4 +1,4 @@
-package com.github.heartsemma.communitywall.Events;
+package com.github.heartsemma.communityWall.listeners;
 
 import org.slf4j.Logger;
 import org.spongepowered.api.event.Listener;
@@ -6,7 +6,7 @@ import org.spongepowered.api.event.network.ClientConnectionEvent;
 import org.spongepowered.api.network.PlayerConnection;
 import org.spongepowered.api.network.RemoteConnection;
 
-import com.github.heartsemma.communitywall.Wall.RuleManager;
+import com.github.heartsemma.communityWall.wall.RuleManager;
 
 public class ClientLoginListener
 {

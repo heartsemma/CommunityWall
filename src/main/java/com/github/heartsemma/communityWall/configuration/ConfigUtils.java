@@ -1,4 +1,4 @@
-package com.github.heartsemma.communitywall.Configuration;
+package com.github.heartsemma.communityWall.configuration;
 
 import java.io.File;
 import java.io.IOException;

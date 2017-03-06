@@ -1,4 +1,4 @@
-package com.github.heartsemma.communitywall.Wall.ConnectionRules;
+package com.github.heartsemma.communityWall.wall.connectionRules;
 
 import java.io.IOException;
 
@@ -7,8 +7,8 @@ import org.slf4j.Logger;
 import org.spongepowered.api.network.PlayerConnection;
 import org.xml.sax.SAXException;
 
-import com.github.heartsemma.communitywall.Configuration.Bots.BotConfig;
-import com.github.heartsemma.communitywall.Wall.ConnectionRule;
+import com.github.heartsemma.communityWall.configuration.bots.BotConfig;
+import com.github.heartsemma.communityWall.wall.ConnectionRule;
 
 public class StopForumSpamRule extends ConnectionRule
 {

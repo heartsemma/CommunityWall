@@ -1,4 +1,4 @@
-package com.github.heartsemma.communitywall;
+package com.github.heartsemma.communityWall;
 
 import java.nio.file.Path;
 
@@ -11,12 +11,12 @@ import org.spongepowered.api.event.game.state.GamePreInitializationEvent;
 import org.spongepowered.api.plugin.Plugin;
 import org.spongepowered.api.plugin.PluginContainer;
 
-import com.github.heartsemma.communitywall.Configuration.Config;
-import com.github.heartsemma.communitywall.Configuration.ConfigUtils;
-import com.github.heartsemma.communitywall.Events.ClientLoginListener;
-import com.github.heartsemma.communitywall.Wall.RuleManager;
-import com.github.heartsemma.communitywall.Wall.ConnectionRules.BotScoutRule;
-import com.github.heartsemma.communitywall.Wall.ConnectionRules.StopForumSpamRule;
+import com.github.heartsemma.communityWall.configuration.Config;
+import com.github.heartsemma.communityWall.configuration.ConfigUtils;
+import com.github.heartsemma.communityWall.listeners.ClientLoginListener;
+import com.github.heartsemma.communityWall.wall.RuleManager;
+import com.github.heartsemma.communityWall.wall.connectionRules.BotScoutRule;
+import com.github.heartsemma.communityWall.wall.connectionRules.StopForumSpamRule;
 import com.google.inject.Inject;
 
 @Plugin(id = "communitywall", name = "CommunityWall", version = "0.1 (Alpha)")
