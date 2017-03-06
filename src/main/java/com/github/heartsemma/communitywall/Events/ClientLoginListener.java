@@ -8,9 +8,9 @@ import org.spongepowered.api.network.RemoteConnection;
 
 import com.github.heartsemma.communitywall.Wall.RuleManager;
 
-public class ClientLoginEvent
+public class ClientLoginListener
 {
-	public ClientLoginEvent(Logger logger, RuleManager ruleManager)
+	public ClientLoginListener(Logger logger, RuleManager ruleManager)
 	{
 		this.logger = logger;
 		this.ruleManager = ruleManager;

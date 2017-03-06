@@ -1,4 +1,4 @@
-package com.github.heartsemma.communitywall.ConnectionChecks;
+package com.github.heartsemma.communitywall.Wall;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.doReturn;
@@ -89,20 +89,22 @@ public class RuleManagerTest
 	/**
 	 * Creates a partial mock of a connection that can return an ip address.
 	 * 
-	 * @param ipString The IP to return.
-	 *            
-	 * @return A PlayerConnection object that can return a Host Address of the ipString but nothing else.
+	 * @param ipString
+	 *            The IP to return.
+	 * 
+	 * @return A PlayerConnection object that can return a Host Address of the
+	 *         ipString but nothing else.
 	 */
 	private PlayerConnection newConnection(String ipString)
 	{
 		PlayerConnection playerConnection = mock(PlayerConnection.class);
-		
+
 		InetAddress inetAddress = mock(InetAddress.class);
 		doReturn(ipString).when(inetAddress).getHostAddress();
-		
+
 		InetSocketAddress socketAddress = new InetSocketAddress(inetAddress, 51);
 		doReturn(socketAddress).when(playerConnection).getAddress();
-		
+
 		return playerConnection;
 	}
 

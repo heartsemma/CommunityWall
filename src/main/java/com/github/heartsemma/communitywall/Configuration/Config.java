@@ -10,28 +10,30 @@ public class Config
 {
 	public Config()
 	{
-		//These are all the default values and are assigned when the constructor to Config is called.
+		// These are all the default values and are assigned when the
+		// constructor to Config is called.
 		version = 1;
 		botConfig = new BotConfig();
-		
+
 	}
-	
+
 	/*
 	 * Settings
 	 */
-	@Setting(value="Version", comment="The version number of the configuration. Do not modify this unless you want your config overwritten.")
+	@Setting(value = "Version", comment = "The version number of the configuration. Do not modify this unless you want your config overwritten.")
 	private double version;
-	
-	@Setting(value="Bots", comment="These options govern how your server determines which users or bots .")
+
+	@Setting(value = "Bots", comment = "These options govern how your server determines which users or bots .")
 	private BotConfig botConfig;
-	
+
 	/**
 	 * @return The version number of this configuration.
 	 */
-	public double getVersion(){
+	public double getVersion()
+	{
 		return version;
 	}
-	
+
 	/**
 	 * @return The held configuration object for rules about Bots.
 	 */
@@ -39,6 +41,5 @@ public class Config
 	{
 		return botConfig;
 	}
-	
-	
+
 }
