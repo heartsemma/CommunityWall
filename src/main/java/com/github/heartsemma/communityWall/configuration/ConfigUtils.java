@@ -29,17 +29,14 @@ public class ConfigUtils
 	 * @param logger
 	 *            The logger used to display errors, information, etc.
 	 */
-	public ConfigUtils(String pluginName, Logger logger)
+	public ConfigUtils(Logger logger)
 	{
-		Preconditions.checkNotNull(pluginName, "Tried to instantiate a ConfigUtils object with a null pluginName.");
 		Preconditions.checkNotNull(logger, "Tried to instantiate a ConfigUtils object with a null logger.");
-
-		this.pluginName = pluginName;
+		
 		this.logger = logger;
 
 	}
-
-	private String pluginName;
+	
 	private Logger logger;
 
 	/**
@@ -58,8 +55,7 @@ public class ConfigUtils
 		// Unable to load rootNode
 		if (rootNode == null)
 		{
-			logger.error("When trying to load a Config, " + pluginName
-					+ " encountered an error. Loading a default configuration file.");
+			logger.error("Encountered an error while trying to load a config. Loading a default configuration file.");
 			return defaultConfig;
 		}
 
@@ -183,7 +179,7 @@ public class ConfigUtils
 			if (!configFile.renameTo(oldConfig))
 			{
 				// Renaming didn't succeed.
-				logger.error(pluginName + " had trouble renaming bad/old configuration file.");
+				logger.error("Had trouble renaming bad/old configuration file.");
 				logger.error("A new default configuration file could not be created.");
 				return;
 			}

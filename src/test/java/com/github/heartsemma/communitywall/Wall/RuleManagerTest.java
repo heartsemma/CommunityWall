@@ -14,8 +14,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.spongepowered.api.network.PlayerConnection;
 
-import com.github.heartsemma.communityWall.wall.ConnectionRule;
-import com.github.heartsemma.communityWall.wall.RuleManager;
+import com.github.heartsemma.communityWall.wall.Rule;
+import com.github.heartsemma.communityWall.wall.ConnectionManager;
 
 public class RuleManagerTest
 {
@@ -26,15 +26,15 @@ public class RuleManagerTest
 	{
 		logger = LoggerFactory.getLogger("ROOT");
 		TestRule testRule;
-		RuleManager ruleManager;
+		ConnectionManager connectionManager;
 
 		// Create five randomized rules that block a random IP, add to
 		// ruleManager, make sure ruleManager responds to the rules
 		for (int i = 0; i < 5; i++)
 		{
 			// Empty Rule Manager with no rules about PlayerConnections
-			ruleManager = new RuleManager(logger);
-			// Small private ConnectionRule class that blocks added IPs.
+			connectionManager = new ConnectionManager(logger);
+			// Small private Rule class that blocks added IPs.
 			testRule = new TestRule();
 
 			// Adding a new random IPv4 address to the list of blocked IPs
@@ -42,10 +42,10 @@ public class RuleManagerTest
 			testRule.addBlockedIP(blockedIp);
 
 			// Adding the rule to the ruleManager
-			ruleManager.addConnectionRule(testRule);
+			connectionManager.addConnectionRule(testRule);
 
 			// Testing the
-			assertFalse(ruleManager.goodConnection(newConnection(blockedIp)));
+			assertFalse(connectionManager.goodConnection(newConnection(blockedIp)));
 
 			// Gathering a random unblockedIP
 			String unblockedIP = "";
@@ -54,7 +54,7 @@ public class RuleManagerTest
 				unblockedIP = randomIPv4();
 			} while (unblockedIP.equals(blockedIp));
 
-			assertTrue(ruleManager.goodConnection(newConnection(unblockedIP)));
+			assertTrue(connectionManager.goodConnection(newConnection(unblockedIP)));
 		}
 	}
 
@@ -108,7 +108,7 @@ public class RuleManagerTest
 		return playerConnection;
 	}
 
-	private class TestRule extends ConnectionRule
+	private class TestRule extends Rule
 	{
 
 		public TestRule()

@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.spongepowered.api.network.PlayerConnection;
 
 import com.github.heartsemma.communityWall.configuration.Config;
-import com.github.heartsemma.communityWall.wall.connectionRules.StopForumSpamRule;
+import com.github.heartsemma.communityWall.wall.rules.StopForumSpamRule;
 
 public class StopForumSpamTest
 {

@@ -1,4 +1,4 @@
-package com.github.heartsemma.communityWall.wall.connectionRules;
+package com.github.heartsemma.communityWall.wall.rules;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -10,14 +10,13 @@ import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.spongepowered.api.network.PlayerConnection;
 
-import com.github.heartsemma.communityWall.configuration.bots.BotConfig;
 import com.github.heartsemma.communityWall.configuration.bots.BotScoutConfig;
-import com.github.heartsemma.communityWall.wall.ConnectionRule;
+import com.github.heartsemma.communityWall.wall.Rule;
 
 /**
  * This check uses the API from botscout.com to check incoming players.
  */
-public class BotScoutRule extends ConnectionRule
+public class BotScoutRule extends Rule
 {
 
 	private static final String NAME_OF_CHECK = "Botscout";
@@ -29,15 +28,13 @@ public class BotScoutRule extends ConnectionRule
 	 *            A configuration object detailing how BotScoutRule should
 	 *            function.
 	 */
-	public BotScoutRule(Logger logger, BotConfig botConfig)
+	public BotScoutRule(Logger logger, BotScoutConfig config)
 	{
 		this.logger = logger;
-		this.botConfig = botConfig;
-		this.botScoutConfig = botConfig.getBotScoutConfig();
+		this.config = config;
 	}
 
-	private BotConfig botConfig;
-	private BotScoutConfig botScoutConfig;
+	private BotScoutConfig config;
 	private Logger logger;
 
 	@Override
@@ -62,16 +59,13 @@ public class BotScoutRule extends ConnectionRule
 	@Override
 	protected boolean isAllowed(PlayerConnection connection)
 	{
-		if (!botConfig.shouldBlockBots() || !botScoutConfig.isEnabled())
-			return true;
-
-		boolean onError = !botScoutConfig.shouldRejectOnError();
-		boolean onNoUses = !botScoutConfig.shouldRejectOnNoUses();
+		boolean onError = !config.shouldRejectOnError();
+		boolean onNoUses = !config.shouldRejectOnNoUses();
 
 		String connectionIP = connection.getAddress().getAddress().getHostAddress();
 		String ipCheckString = "http://www.botscout.com/test/?ip=" + connectionIP;
 
-		String apiKey = botScoutConfig.getAPIKey();
+		String apiKey = config.getAPIKey();
 		if (apiKey != null && !apiKey.equals(""))
 			ipCheckString += "&key=" + apiKey;
 

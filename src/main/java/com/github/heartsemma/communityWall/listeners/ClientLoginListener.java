@@ -6,18 +6,18 @@ import org.spongepowered.api.event.network.ClientConnectionEvent;
 import org.spongepowered.api.network.PlayerConnection;
 import org.spongepowered.api.network.RemoteConnection;
 
-import com.github.heartsemma.communityWall.wall.RuleManager;
+import com.github.heartsemma.communityWall.wall.ConnectionManager;
 
 public class ClientLoginListener
 {
-	public ClientLoginListener(Logger logger, RuleManager ruleManager)
+	public ClientLoginListener(Logger logger, ConnectionManager connectionManager)
 	{
 		this.logger = logger;
-		this.ruleManager = ruleManager;
+		this.connectionManager = connectionManager;
 	}
 
 	private Logger logger;
-	private RuleManager ruleManager;
+	private ConnectionManager connectionManager;
 
 	@Listener
 	public void onClientLogin(ClientConnectionEvent.Login event)
@@ -29,7 +29,7 @@ public class ClientLoginListener
 		{
 			PlayerConnection playerConnection = (PlayerConnection) connection;
 
-			if (ruleManager.goodConnection(playerConnection))
+			if (connectionManager.goodConnection(playerConnection))
 			{
 				// No need to say why; the CheckManager does that.
 				logger.info("Letting them log in...");

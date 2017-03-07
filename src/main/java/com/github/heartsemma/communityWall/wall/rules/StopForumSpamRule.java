@@ -1,4 +1,4 @@
-package com.github.heartsemma.communityWall.wall.connectionRules;
+package com.github.heartsemma.communityWall.wall.rules;
 
 import java.io.IOException;
 
@@ -8,20 +8,21 @@ import org.spongepowered.api.network.PlayerConnection;
 import org.xml.sax.SAXException;
 
 import com.github.heartsemma.communityWall.configuration.bots.BotConfig;
-import com.github.heartsemma.communityWall.wall.ConnectionRule;
+import com.github.heartsemma.communityWall.configuration.bots.StopForumSpamConfig;
+import com.github.heartsemma.communityWall.wall.Rule;
 
-public class StopForumSpamRule extends ConnectionRule
+public class StopForumSpamRule extends Rule
 {
 
 	private static final String NAME_OF_CHECK = "StopForumSpam";
 
-	public StopForumSpamRule(Logger logger, BotConfig config)
+	public StopForumSpamRule(Logger logger, StopForumSpamConfig config)
 	{
 		this.logger = logger;
 		this.config = config;
 	}
 
-	private BotConfig config;
+	private StopForumSpamConfig config;
 	private Logger logger;
 	
 	
@@ -33,13 +34,7 @@ public class StopForumSpamRule extends ConnectionRule
 	@Override
 	protected boolean isAllowed(PlayerConnection playerConnection)
 	{
-		if (!config.shouldBlockBots() || !config.getBotScoutConfig().isEnabled())
-		{
-			// If the detection is not enabled we don't check for bots.
-			return true;
-		}
-
-		boolean onError = !config.getBotScoutConfig().shouldRejectOnError();
+		boolean onError = !config.shouldRejectOnError();
 
 		String ip = playerConnection.getAddress().getAddress().getHostAddress();
 		try

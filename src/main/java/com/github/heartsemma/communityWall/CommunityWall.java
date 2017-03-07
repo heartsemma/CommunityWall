@@ -13,10 +13,17 @@ import org.spongepowered.api.plugin.PluginContainer;
 
 import com.github.heartsemma.communityWall.configuration.Config;
 import com.github.heartsemma.communityWall.configuration.ConfigUtils;
+import com.github.heartsemma.communityWall.configuration.bots.BotConfig;
+import com.github.heartsemma.communityWall.configuration.bots.BotScoutConfig;
+import com.github.heartsemma.communityWall.configuration.bots.StopForumSpamConfig;
+import com.github.heartsemma.communityWall.configuration.whitelists.WhitelistConfig;
 import com.github.heartsemma.communityWall.listeners.ClientLoginListener;
-import com.github.heartsemma.communityWall.wall.RuleManager;
-import com.github.heartsemma.communityWall.wall.connectionRules.BotScoutRule;
-import com.github.heartsemma.communityWall.wall.connectionRules.StopForumSpamRule;
+import com.github.heartsemma.communityWall.wall.ConnectionManager;
+import com.github.heartsemma.communityWall.wall.rules.BotScoutRule;
+import com.github.heartsemma.communityWall.wall.rules.StopForumSpamRule;
+import com.github.heartsemma.communityWall.wall.whitelists.ConfiguredWhitelist;
+import com.github.heartsemma.communityWall.wall.whitelists.LinkLocalWhitelist;
+import com.github.heartsemma.communityWall.wall.whitelists.LocalhostWhitelist;
 import com.google.inject.Inject;
 
 @Plugin(id = "communitywall", name = "CommunityWall", version = "0.1 (Alpha)")
@@ -35,10 +42,8 @@ public class CommunityWall
 	private Config config;
 	private ConfigUtils configUtils;
 
-	private String pluginName;
-
 	private EventManager eventManager;
-	private RuleManager checkManager;
+	private ConnectionManager checkManager;
 
 	@Listener
 	public void preInit(GamePreInitializationEvent event)
@@ -46,12 +51,9 @@ public class CommunityWall
 		logger.info("CommunityWall is being initialized and is preparing to protect the server from unwanted bots and"
 				+ " griefers.");
 
-		// Name of plugin.
-		pluginName = pluginContainer.getName();
-
 		// Used for modifying the configuration, getting it, creating new ones,
 		// etc.
-		configUtils = new ConfigUtils(pluginName, logger);
+		configUtils = new ConfigUtils(logger);
 
 		// Loading configuration. ConfigUtils class does all error checking.
 		config = configUtils.loadConfig(defaultConfigPath);
@@ -65,11 +67,30 @@ public class CommunityWall
 	{
 		logger.debug("Registering listeners...");
 
-		checkManager = new RuleManager(logger);
-
-		checkManager.addConnectionRule(new BotScoutRule(logger, config.getBotConfig()));
-		checkManager.addConnectionRule(new StopForumSpamRule(logger, config.getBotConfig()));
-
+		checkManager = new ConnectionManager(logger);
+		
+		BotConfig botConfig = config.getBotConfig();
+		if(botConfig.shouldBlockBots())
+		{
+			BotScoutConfig botScoutConfig = botConfig.getBotScoutConfig();
+			StopForumSpamConfig stopForumSpamConfig = botConfig.getStopForumSpamConfig();
+			
+			if(botScoutConfig.isEnabled())
+				checkManager.addConnectionRule(new BotScoutRule(logger, botScoutConfig));
+				
+			if(stopForumSpamConfig.isEnabled())
+				checkManager.addConnectionRule(new StopForumSpamRule(logger, stopForumSpamConfig));
+		}
+		
+		WhitelistConfig whitelistConfig = config.getWhitelistConfig();
+		
+		if(whitelistConfig.isLocalhostWhitelisted())
+			checkManager.addConnectionWhitelist(new LocalhostWhitelist());
+		if(whitelistConfig.isIntranetWhitelisted())
+			checkManager.addConnectionWhitelist(new LinkLocalWhitelist());
+		
+		checkManager.addConnectionWhitelist(new ConfiguredWhitelist(logger, whitelistConfig, defaultConfigPath));
+		
 		eventManager.registerListeners(this, new ClientLoginListener(logger, checkManager));
 
 	}

@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.spongepowered.api.network.PlayerConnection;
 
 import com.github.heartsemma.communityWall.configuration.Config;
-import com.github.heartsemma.communityWall.wall.connectionRules.BotScoutRule;
+import com.github.heartsemma.communityWall.wall.rules.BotScoutRule;
 
 import static org.mockito.Mockito.*;
 
