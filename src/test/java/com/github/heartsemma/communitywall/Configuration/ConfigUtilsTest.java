@@ -13,7 +13,7 @@ import com.github.heartsemma.communityWall.configuration.ConfigUtils;
 
 public class ConfigUtilsTest
 {
-	private ConfigUtils configUtils = new ConfigUtils("TestPlugin", LoggerFactory.getLogger("ROOT"));
+	private ConfigUtils configUtils = new ConfigUtils(LoggerFactory.getLogger("ROOT"));
 
 	// TODO: Finish this testing suite when config is done.
 

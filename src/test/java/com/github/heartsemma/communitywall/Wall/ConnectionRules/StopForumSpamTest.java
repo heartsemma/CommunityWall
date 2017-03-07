@@ -28,7 +28,7 @@ public class StopForumSpamTest
 	{
 		Logger logger = LoggerFactory.getLogger("ROOT");
 
-		StopForumSpamRule sfsRule = new StopForumSpamRule(logger, new Config().getBotConfig());
+		StopForumSpamRule sfsRule = new StopForumSpamRule(logger, new Config().getBotConfig().getStopForumSpamConfig());
 
 		ArrayList<PlayerConnection> goodConnections = new ArrayList<PlayerConnection>();
 

@@ -28,7 +28,7 @@ public class BotScoutCheckTest
 
 		Logger logger = LoggerFactory.getLogger("ROOT");
 
-		BotScoutRule botScoutRule = new BotScoutRule(logger, new Config().getBotConfig());
+		BotScoutRule botScoutRule = new BotScoutRule(logger, new Config().getBotConfig().getBotScoutConfig());
 
 		ArrayList<PlayerConnection> goodConnections = new ArrayList<PlayerConnection>();
 
