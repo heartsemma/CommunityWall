@@ -19,11 +19,11 @@ public class ConnectionManager
 	private HashSet<Whitelist> whitelists;
 
 	/**
-	 * Runs through every check in its HashSet and returns true if a good
-	 * PlayerConnection, false if not.<br>
+	 * Runs through every check in its HashSet and returns true if a "good" PlayerConnection, false if not.
+	 * <br>
 	 * goodConnection() determines the status of a playerConnection by running through all added whitelists,
 	 * then all rules. If a connection is on any whitelists, it automatically passes regardless of whether or not
-	 * it violates any rules.
+	 * it violates any rules. If a connection is not on a whitelist, it passes if it passes all rules.
 	 * 
 	 * @param playerConnection
 	 *            The player to run through every check
@@ -55,26 +55,30 @@ public class ConnectionManager
 	/**
 	 * Adds another whitelist to the HashSet of rules. <br>
 	 * These are used to determine the validity of a playerConnection in
-	 * goodConnection(PlayerConnection).
+	 * goodConnection(PlayerConnection). Does not add a new whitelist
+	 * if it already exists in the HashSet.
 	 * 
 	 * @param cc
 	 *            The connectionCheck to add to the CheckManager's list.
 	 */
 	public void addConnectionWhitelist(Whitelist whitelist)
 	{
-		whitelists.add(whitelist);
+		if(!whitelists.contains(whitelist))
+			whitelists.add(whitelist);
 	}
 
 	/**
 	 * Adds another rule to the HashSet of rules. <br>
 	 * These are used to determine the validity of a playerConnection in
-	 * goodConnection(PlayerConnection).
+	 * goodConnection(PlayerConnection). Does not add a new rule if it
+	 * already exists in the hashset.
 	 * 
 	 * @param cc
 	 *            The connectionCheck to add to the CheckManager's list.
 	 */
 	public void addConnectionRule(Rule rule)
 	{
-		rules.add(rule);
+		if(!rules.contains(rule))
+			rules.add(rule);
 	}
 }

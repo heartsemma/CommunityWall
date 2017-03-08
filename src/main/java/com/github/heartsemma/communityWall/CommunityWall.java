@@ -9,7 +9,6 @@ import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.game.state.GameInitializationEvent;
 import org.spongepowered.api.event.game.state.GamePreInitializationEvent;
 import org.spongepowered.api.plugin.Plugin;
-import org.spongepowered.api.plugin.PluginContainer;
 
 import com.github.heartsemma.communityWall.configuration.Config;
 import com.github.heartsemma.communityWall.configuration.ConfigUtils;
@@ -32,8 +31,6 @@ public class CommunityWall
 
 	@Inject
 	private Logger logger;
-	@Inject
-	private PluginContainer pluginContainer;
 
 	@Inject
 	@DefaultConfig(sharedRoot = true)

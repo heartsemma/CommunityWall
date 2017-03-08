@@ -4,7 +4,6 @@ import java.net.InetAddress;
 
 import org.spongepowered.api.network.PlayerConnection;
 
-import com.github.heartsemma.communityWall.configuration.whitelists.WhitelistConfig;
 import com.github.heartsemma.communityWall.wall.Whitelist;
 
 public class LinkLocalWhitelist extends Whitelist

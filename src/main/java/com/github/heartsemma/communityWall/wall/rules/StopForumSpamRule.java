@@ -7,7 +7,6 @@ import org.slf4j.Logger;
 import org.spongepowered.api.network.PlayerConnection;
 import org.xml.sax.SAXException;
 
-import com.github.heartsemma.communityWall.configuration.bots.BotConfig;
 import com.github.heartsemma.communityWall.configuration.bots.StopForumSpamConfig;
 import com.github.heartsemma.communityWall.wall.Rule;
 

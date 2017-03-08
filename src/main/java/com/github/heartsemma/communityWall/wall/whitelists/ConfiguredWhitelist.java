@@ -3,7 +3,6 @@ package com.github.heartsemma.communityWall.wall.whitelists;
 import java.nio.file.Path;
 
 import org.slf4j.Logger;
-import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.network.PlayerConnection;
 
 import com.github.heartsemma.communityWall.configuration.whitelists.WhitelistConfig;
@@ -25,7 +24,7 @@ public class ConfiguredWhitelist extends Whitelist
 	@Override
 	public String getName()
 	{
-		return "";
+		return "Whitelist Configuration";
 	}
 
 	@Override
