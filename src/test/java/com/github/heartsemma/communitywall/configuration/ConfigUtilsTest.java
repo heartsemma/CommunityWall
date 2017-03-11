@@ -1,4 +1,4 @@
-package com.github.heartsemma.communitywall.Configuration;
+package com.github.heartsemma.communitywall.configuration;
 
 import static org.junit.Assert.*;
 

@@ -1,4 +1,4 @@
-package com.github.heartsemma.communitywall.wall.connectionRules;
+package com.github.heartsemma.communitywall.wall.rules;
 
 import static org.junit.Assert.*;
 import static com.github.heartsemma.communitywall.testUtils.MockUtils.newPlayerConnection;

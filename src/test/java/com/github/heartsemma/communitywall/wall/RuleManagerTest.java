@@ -8,7 +8,8 @@ import java.net.InetAddress;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.github.heartsemma.communitywall.wall.connectionRules.TestRule;
+
+import com.github.heartsemma.communitywall.wall.rules.TestRule;
 import com.github.heartsemma.communitywall.wall.whitelists.TestWhitelist;
 import com.github.heartsemma.communityWall.wall.ConnectionManager;
 

@@ -1,4 +1,4 @@
-package com.github.heartsemma.communitywall.wall.connectionRules;
+package com.github.heartsemma.communitywall.wall.rules;
 
 import java.net.InetAddress;
 import java.util.HashSet;
